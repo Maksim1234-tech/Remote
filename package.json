@@ -1,0 +1,15 @@
+{
+  "name": "boss-remote-desktop",
+  "version": "1.0.0",
+  "description": "Remote desktop via HTML/JS",
+  "main": "script.js",
+  "scripts": {
+    "start": "node script.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2",
+    "robotjs": "^0.6.0",
+    "screenshot-desktop": "^1.12.7"
+  }
+}
