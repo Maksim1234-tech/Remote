@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>BOSS DESKTOP</title>
+    <style>
+        body { margin: 0; background: #000; overflow: hidden; display: flex; justify-content: center; }
+        img { cursor: crosshair; height: 100vh; }
+    </style>
+</head>
+<body>
+    <img id="display">
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        const display = document.getElementById('display');
+
+        socket.on('screen', (base64) => {
+            display.src = 'data:image/jpeg;base64,' + base64;
+        });
+
+        display.addEventListener('click', (e) => {
+            const x = (e.clientX / window.innerWidth) * screen.width;
+            const y = (e.clientY / window.innerHeight) * screen.height;
+            socket.emit('click', { x, y });
+        });
+    </script>
+</body>
+</html>
